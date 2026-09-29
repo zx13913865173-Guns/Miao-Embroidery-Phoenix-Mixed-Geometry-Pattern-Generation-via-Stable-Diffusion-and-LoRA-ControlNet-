@@ -1,0 +1,27 @@
+{
+  "version": "0.3.0",
+  "description": "Miao embroidery phoenix blank conditioning ablation",
+  "model": {
+    "name": "sd_v1.5_pruned",
+    "path": "/models/checkpoints/sd_v1.5_pruned.safetensors",
+    "lora": {
+      "path": "/models/lora/miao_phoenix_rank32.safetensors",
+      "strength": 1.0
+    },
+    "controlnet": {
+      "name": "control_v11p_sd15_lineart",
+      "path": "/models/controlnet/control_v11p_sd15_lineart.pth",
+      "preprocessor": "LineartCoarse",
+      "conditioning_scale": 0.7,
+      "use_all_white_conditioning": true
+    },
+    "sampler": {
+      "name": "DPM++ 2M Karras",
+      "steps": 30,
+      "cfg": 8.0,
+      "resolution": [512, 512],
+      "seed_range": [1, 40]
+    },
+    "negative_prompt": "low quality, blurry, distorted, ugly, bad anatomy, watermark, text"
+  }
+}
