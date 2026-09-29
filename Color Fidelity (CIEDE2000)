@@ -1,0 +1,4 @@
+python scripts/compute_color_fidelity.py \
+  --generated_dir /path/to/generated/images \
+  --reference_dir /path/to/reference/images \
+  --output color_fidelity.csv
