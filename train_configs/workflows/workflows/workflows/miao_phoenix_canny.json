@@ -1,0 +1,28 @@
+{
+  "version": "0.3.0",
+  "description": "Miao embroidery phoenix Canny standalone generation",
+  "model": {
+    "name": "sd_v1.5_pruned",
+    "path": "/models/checkpoints/sd_v1.5_pruned.safetensors",
+    "lora": {
+      "path": "/models/lora/miao_phoenix_rank32.safetensors",
+      "strength": 1.0
+    },
+    "controlnet": {
+      "name": "control_v11p_sd15_canny",
+      "path": "/models/controlnet/control_v11p_sd15_canny.pth",
+      "preprocessor": "Canny",
+      "canny_low": 100,
+      "canny_high": 200,
+      "conditioning_scale": 0.7
+    },
+    "sampler": {
+      "name": "DPM++2M Karras",
+      "steps": 30,
+      "cfg": 8.0,
+      "resolution": [512, 512],
+      "seed_range": [1, 40]
+    },
+    "negative_prompt": "low quality, blurry, distorted, ugly, bad anatomy, watermark, text"
+  }
+}
