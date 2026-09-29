@@ -1,0 +1,2 @@
+accelerate launch train_network.py \
+  --config_file train_configs/lora_rank8.yaml
