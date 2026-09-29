@@ -1,0 +1,4 @@
+python scripts/compute_mae.py \
+  --generated_dir /path/to/generated/images \
+  --ground_truth /path/to/ground_truth/outer_frame.json \
+  --output mae_results.csv
