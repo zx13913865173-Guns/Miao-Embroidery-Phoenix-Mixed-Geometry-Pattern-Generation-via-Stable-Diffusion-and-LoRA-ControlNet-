@@ -1,0 +1,4 @@
+python scripts/compute_pca.py \
+  --image_dir /path/to/training/images \
+  --variance_threshold 0.90 \
+  --n_bootstrap 100
