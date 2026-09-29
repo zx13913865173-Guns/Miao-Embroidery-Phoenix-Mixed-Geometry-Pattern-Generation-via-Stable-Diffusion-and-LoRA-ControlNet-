@@ -1,0 +1,43 @@
+# LoRA training configuration for Miao embroidery phoenix pattern
+# Base model: Stable Diffusion v1.5
+
+model:
+  name: "sd_v1.5_pruned"
+  path: "./models/checkpoints/sd_v1.5_pruned.safetensors"
+  v2: false
+  v_pred: false
+
+train:
+  output_dir: "./models/lora"
+  output_name: "miao_phoenix_rank8"
+  train_data_dir: "./dataset/train"
+  resolution: 512
+  batch_size: 1
+  max_train_epochs: 20
+  optimizer:
+    type: "AdamW8bit"
+  learning_rate: 1.0e-4
+  lr_scheduler: "constant"
+  lr_warmup_steps: 0
+  precision: "fp16"
+  save_precision: "fp16"
+
+  lora:
+    network_module: "networks.lora"
+    network_dim: 8
+    network_alpha: 1.0
+    network_args: ["conv_dim=0", "conv_alpha=1"]
+
+  regularization:
+    min_snr_gamma: 5.0
+
+logging:
+  logging_dir: "./logs"
+  save_every_n_epochs: 5
+
+sampling:
+  sampler: "ddim"
+  sample_every_n_epochs: 5
+  sample_prompts: "./config/sample_prompts.txt"
+
+seed: 1337
