@@ -1,0 +1,40 @@
+{
+  "version": "0.3.0",
+  "description": "Miao embroidery phoenix fusion generation (MLSD:Lineart = 0.7:0.3)",
+  "model": {
+    "name": "sd_v1.5_pruned",
+    "path": "/models/checkpoints/sd_v1.5_pruned.safetensors",
+    "lora": {
+      "path": "/models/lora/miao_phoenix_rank32.safetensors",
+      "strength": 1.0
+    },
+    "fusion": {
+      "method": "weighted_average",
+      "weights": [0.7, 0.3],
+      "inputs": [
+        {
+          "name": "MLSD",
+          "preprocessor": "MLSD",
+          "mlsd_thr_v": 0.1,
+          "mlsd_thr_d": 0.2,
+          "conditioning_scale": 0.5
+        },
+        {
+          "name": "Lineart",
+          "preprocessor": "LineartCoarse",
+          "conditioning_scale": 0.8
+        }
+      ],
+      "output_conditioning_scale": 0.8
+    },
+    "sampler": {
+      "name": "DPM++2M Karras",
+      "steps": 30,
+      "cfg": 8.0,
+      "resolution": [512, 512],
+      "seed_range": [1, 40]
+    },
+    "negative_prompt": "low quality, blurry, distorted, ugly, bad anatomy, watermark, text",
+    "batch_size": 1
+  }
+}
